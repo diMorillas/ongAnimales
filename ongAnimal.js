@@ -1,4 +1,5 @@
 window.onload = () => {
+    let seleccionAnimal; // Variable para almacenar el nombre del animal seleccionado
     let animales = [
         // Gatos
         { nombre: "Wiskas", edad: 7, tipo: "gato", estadoAdopcion: false, imagen: "./img/wiskas.jpeg" },
@@ -40,16 +41,23 @@ window.onload = () => {
             cardText.classList.add('card-text', 'infoCarta', 'center');
             if (animal.edad <= 1){
                 cardText.textContent = `¡Hola soy un ${animal.tipo} y tengo ${animal.edad} año!`; 
-            }else{
+            } else {
                 cardText.textContent = `¡Hola soy un ${animal.tipo} y tengo ${animal.edad} años!`;
             }
 
             let adoptButton = document.createElement('a');
-            adoptButton.href = "#containerPersonas";
+            adoptButton.href = "#";
             adoptButton.classList.add('botonAdoptar');
             adoptButton.textContent = "Adoptar";
 
-            
+            adoptButton.addEventListener('click', (modalWindow) => {
+                modalWindow.preventDefault(); 
+                seleccionAnimal = animal.nombre; 
+                document.getElementById('modalMessage').textContent = `¡Has seleccionado a ${seleccionAnimal}!`; 
+                const modal = new bootstrap.Modal(document.getElementById('animalModal'));
+                modal.show(); 
+            });
+
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
             cardBody.appendChild(adoptButton);
@@ -58,7 +66,6 @@ window.onload = () => {
             listaAnimal.appendChild(card);
         });
     }
-
 
     generaAnimales(); 
 }
