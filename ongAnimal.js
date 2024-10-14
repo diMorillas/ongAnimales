@@ -38,9 +38,9 @@ window.onload = () => {
         let listaPersona = document.getElementById('listaPersonas');
 
         personas.forEach(persona => {
-            let nombrePersona = document.createElement('li');
+            let nombrePersona = document.createElement('button');
             nombrePersona.textContent = persona.nombre;
-            nombrePersona.classList.add('persona')
+            nombrePersona.classList.add('persona');
             listaPersona.appendChild(nombrePersona);
         });
     }
@@ -94,6 +94,7 @@ window.onload = () => {
             listaAnimal.appendChild(card);
         });
     }
+
 
     generaAnimales();
     generaPersonas();
