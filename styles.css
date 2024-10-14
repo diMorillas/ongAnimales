@@ -23,7 +23,17 @@ h1{
 /*Listas*/
 
 .persona{
+display: flex;
+flex-direction: column;
 text-align: left;
+border: 1px solid black;
+list-style: none;
+padding: 15px;
+background-color: lightgray;
+margin-bottom: 25px;
+width: 100%;
+align-items: center;
+border-radius: 10px;
 }
 
 .animal{

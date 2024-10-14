@@ -18,6 +18,34 @@ window.onload = () => {
         { nombre: "Chia", edad: 2, tipo: "ave", estadoAdopcion: false, imagen: "./img/chia.jpg" },
     ];
 
+
+    //Personas
+
+    let personas = [
+        { nombre: "Juan", edad: 24, animalesAdoptados: [], imagen: "juan.jpg" },
+        { nombre: "Laura", edad: 37, animalesAdoptados: [], imagen: "laura.jpg" },
+        { nombre: "Luis", edad: 31, animalesAdoptados: [], imagen: "luis.jpg" },
+        { nombre: "Maria Teresa", edad: 18, animalesAdoptados: [], imagen: "mariateresa.jpg" },
+        { nombre: "David", edad: 22, animalesAdoptados: [], imagen: "david.jpg" },
+        { nombre: "Miguel", edad: 54, animalesAdoptados: [], imagen: "miguel.jpg" },
+        { nombre: "Pablo", edad: 40, animalesAdoptados: [], imagen: "pablo.jpg" },
+        { nombre: "Jordi", edad: 19, animalesAdoptados: [], imagen: "jordi.jpg" },
+        { nombre: "Pedro", edad: 67, animalesAdoptados: [], imagen: "pedro.jpg" },
+        { nombre: "Lucia", edad: 59, animalesAdoptados: [], imagen: "lucia.jpg" },
+    ];
+
+    const generaPersonas =(persona)=>{
+        let listaPersona = document.getElementById('listaPersonas');
+
+        personas.forEach(persona => {
+            let nombrePersona = document.createElement('button');
+            nombrePersona.textContent = persona.nombre;
+            nombrePersona.classList.add('persona');
+            listaPersona.appendChild(nombrePersona);
+        });
+    }
+    
+
     const generaAnimales = () => {
         let listaAnimal = document.getElementById('listaAnimal');
 
@@ -67,5 +95,7 @@ window.onload = () => {
         });
     }
 
-    generaAnimales(); 
+
+    generaAnimales();
+    generaPersonas();
 }
