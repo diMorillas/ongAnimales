@@ -13,11 +13,17 @@ h1{
     margin:auto;
 }
 
+.img-seccion-hero{
+    filter: drop-shadow(0 0 12px crimson); /*Filter para que nos resiga la imagen*/
+}
 
 /*Auxiliares*/
 
 .center{
     text-align: center;
+}
+.left{
+    text-align: left;
 }
 
 /*Listas*/
