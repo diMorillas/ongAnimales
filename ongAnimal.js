@@ -91,25 +91,82 @@ window.onload = function () {
             // Comprobar si el nombre en la carta coincide con el nombre de la persona seleccionada
             if (card.querySelector('.card-title').textContent === personaSeleccionada.nombre) {
                 // Limpiar el contenido anterior de animales adoptados
-                const animalesAdoptadosList = card.querySelector('.animales-adoptados');
-                if (animalesAdoptadosList) {
-                    animalesAdoptadosList.innerHTML = ''; // Limpiar contenido anterior
-                } else {
+                let animalesAdoptadosList = card.querySelector('.animales-adoptados');
+                if (!animalesAdoptadosList) {
                     // Crear un contenedor para los animales adoptados si no existe
-                    const newList = document.createElement('div');
-                    newList.classList.add('animales-adoptados');
-                    card.appendChild(newList);
+                    animalesAdoptadosList = document.createElement('div');
+                    animalesAdoptadosList.classList.add('animales-adoptados');
+                    card.appendChild(animalesAdoptadosList);
+                } else {
+                    // Limpiar el contenido anterior si existe
+                    animalesAdoptadosList.innerHTML = '';
                 }
 
                 // Añadir los animales adoptados a la carta
                 personaSeleccionada.animalesAdoptados.forEach(animal => {
-                    const animalAdoptado = document.createElement('p');
-                    animalAdoptado.textContent = animal.nombre;
-                    animalesAdoptadosList.appendChild(animalAdoptado);
+                    // Crear un contenedor para cada animal adoptado
+                    let animalContainer = document.createElement('div');
+                    animalContainer.classList.add('animal-adoptado');
+
+                    // Imagen del animal adoptado
+                    let imgAnimalAdoptado = document.createElement('img');
+                    imgAnimalAdoptado.src = animal.imagen;
+                    imgAnimalAdoptado.classList.add('animal-adoptado-img');
+                    imgAnimalAdoptado.alt = animal.nombre;
+
+                    // Texto que indica que el animal ha sido adoptado
+                    let textoAdoptado = document.createElement('p');
+                    textoAdoptado.textContent = "¡" + animal.nombre + " ha sido adoptado!";
+                    textoAdoptado.classList.add('texto-adoptado');
+
+                    // Añadir un event listener para revertir la adopción
+                    textoAdoptado.addEventListener('click', function () {
+                        // Revertir el estado de adopción del animal
+                        animal.estadoAdopcion = false;
+
+                        // Eliminar al animal de la lista de adoptados
+                        let index = personaSeleccionada.animalesAdoptados.indexOf(animal);
+                        if (index !== -1) {
+                            personaSeleccionada.animalesAdoptados.splice(index, 1);
+                        }
+
+                        // Cambiar el texto a "¡[NombreAnimal] ya no está adoptado!"
+                        textoAdoptado.textContent = "¡" + animal.nombre + " ya no está adoptado!";
+
+                        // Eliminar la clase de 'adoptado' al animal en la lista principal
+                        let animalImg = document.getElementById(animal.nombre);
+                        animalImg.classList.remove("animalAdoptado");
+
+                        // Volver a mostrar el botón de adopción en la carta del animal
+                        let adoptButton = document.createElement('button');
+                        adoptButton.textContent = "Adoptar";
+                        adoptButton.classList.add('botonAdoptar');
+                        adoptButton.id = "botonAdoptar-" + animal.nombre;
+
+                        adoptButton.addEventListener('click', function () {
+                            seleccionAnimal = animal;
+                            document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
+                            const modal = new bootstrap.Modal(document.getElementById('animalModal'));
+                            modal.show();
+                        });
+
+                        // Insertar el botón de nuevo en la carta del animal
+                        cardBody.appendChild(adoptButton);
+
+                        // Actualizar la carta de la persona para reflejar el cambio
+                        actualizaCartaPersona(personaSeleccionada);
+                    });
+
+                    animalContainer.appendChild(textoAdoptado);
+
+                    // Añadir el contenedor del animal al listado de animales adoptados
+                    animalesAdoptadosList.appendChild(animalContainer);
                 });
             }
         });
     };
+
+
 
 
 

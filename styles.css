@@ -139,6 +139,21 @@ border-radius: 10px;
     transition: box-shadow 0.4s ease;
 }
 
+.animal-adoptado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.texto-adoptado {
+    font-size: 14px;
+    font-weight: bold;
+    color: #28a745; /* Color de éxito/adopción */
+    text-align: center;
+}
+
+
 
 /*Sobre Nosotros*/
 
