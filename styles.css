@@ -36,8 +36,16 @@ align-items: center;
 border-radius: 10px;
 }
 
+.personaSeleccionada{
+    background-color: yellowgreen;
+}
+
 .animal{
     text-align: right;
+}
+
+.animalAdoptado{
+    filter: grayscale(100%);
 }
 
 /*Bootstrap*/
@@ -89,4 +97,8 @@ border-radius: 10px;
 
 .botonAdoptar:hover{
     background-color: #0056b3;
+}
+
+.botonOculto{
+    display: none;
 }
