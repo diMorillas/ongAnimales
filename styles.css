@@ -138,3 +138,19 @@ border-radius: 10px;
     box-shadow: 1px -1px 82px -37px rgba(0,0,0,0.17);
     transition: box-shadow 0.4s ease;
 }
+
+
+/*Sobre Nosotros*/
+
+.imgNosotros{
+    width: 480px;
+    height: 430px;
+    border-radius: 5px;
+}
+
+.containerNosotros{
+    display: flex;
+    gap: 50px;
+    grid-template-columns: calc(2 1fr);
+}
+

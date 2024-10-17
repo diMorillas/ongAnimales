@@ -73,13 +73,43 @@ window.onload = function () {
             // Posicionar la cruz sobre el animal
             animalImg.parentNode.appendChild(cruzImg);
 
-            document.getElementById('modalMessage').textContent = personaSeleccionada.nombre + " ha adoptado a " + seleccionAnimal.nombre + "!";
+            // Actualizar la carta de la persona
+            actualizaCartaPersona(personaSeleccionada);
 
+            document.getElementById('modalMessage').textContent = personaSeleccionada.nombre + " ha adoptado a " + seleccionAnimal.nombre + "!";
 
             seleccionAnimal = null;
         }
     };
 
+
+    const actualizaCartaPersona = function (personaSeleccionada) {
+        // Buscar la carta correspondiente
+        const personaCards = document.querySelectorAll('.persona-card');
+
+        personaCards.forEach(function (card) {
+            // Comprobar si el nombre en la carta coincide con el nombre de la persona seleccionada
+            if (card.querySelector('.card-title').textContent === personaSeleccionada.nombre) {
+                // Limpiar el contenido anterior de animales adoptados
+                const animalesAdoptadosList = card.querySelector('.animales-adoptados');
+                if (animalesAdoptadosList) {
+                    animalesAdoptadosList.innerHTML = ''; // Limpiar contenido anterior
+                } else {
+                    // Crear un contenedor para los animales adoptados si no existe
+                    const newList = document.createElement('div');
+                    newList.classList.add('animales-adoptados');
+                    card.appendChild(newList);
+                }
+
+                // Añadir los animales adoptados a la carta
+                personaSeleccionada.animalesAdoptados.forEach(animal => {
+                    const animalAdoptado = document.createElement('p');
+                    animalAdoptado.textContent = animal.nombre;
+                    animalesAdoptadosList.appendChild(animalAdoptado);
+                });
+            }
+        });
+    };
 
 
 
@@ -143,36 +173,42 @@ window.onload = function () {
     const generaPersonasCarta = function () {
         let listaPersona = document.getElementById('listaPersonasCartas');
         listaPersona.innerHTML = ''; // Limpiar el contenido anterior
-    
+
         personas.forEach(function (persona) {
             // Crear una carta para la persona
             let card = document.createElement('div');
             card.classList.add('card', 'persona-card', 'm-2');
 
-    
             // Añadir la imagen de la persona
             let personaImg = document.createElement('img');
             personaImg.src = persona.imagen; // Asegúrate de que la imagen de la persona está correctamente enlazada
             personaImg.classList.add('card-img-top');
             personaImg.alt = persona.nombre;
-    
+
             // Crear el nombre de la persona
             let cardBody = document.createElement('div');
             cardBody.classList.add('card-body');
-    
+
             let cardTitle = document.createElement('h5');
             cardTitle.classList.add('card-title', 'text-center');
             cardTitle.textContent = persona.nombre;
-    
+
+
             // Añadir el título a la carta
             cardBody.appendChild(cardTitle);
             card.appendChild(personaImg);
             card.appendChild(cardBody);
             listaPersona.appendChild(card);
+
+            // Contenedor para animales adoptados
+            const animalesAdoptadosList = document.createElement('div');
+            animalesAdoptadosList.classList.add('animales-adoptados');
+            cardBody.appendChild(animalesAdoptadosList);
         });
     };
-    
-    
+
+
+
 
 
 
