@@ -7,18 +7,34 @@
 h1{
     text-align: center;
 }
+h2{
+    margin-bottom: 30px;
+}
 
 .container{
     width: 87%;
     margin:auto;
 }
 
+.img-seccion-hero{
+    filter: drop-shadow(0 0 12px crimson); /*Filter para que nos resiga la imagen*/
+}
 
 /*Auxiliares*/
 
 .center{
     text-align: center;
 }
+.left{
+    text-align: left;
+}
+
+.animalot-foto{
+    border-radius: 10px;
+    width: 80%;
+}
+
+
 
 /*Listas*/
 
