@@ -24,12 +24,12 @@ window.onload = function () {
         { nombre: "Laura", edad: 37, animalesAdoptados: [], imagen: "./img/laura.jpg" },
         { nombre: "Luis", edad: 31, animalesAdoptados: [], imagen: "./img/luis.jpg" },
         { nombre: "Maria Teresa", edad: 18, animalesAdoptados: [], imagen: "./img/mariateresa.jpg" },
-        { nombre: "David", edad: 22, animalesAdoptados: [], imagen: "david.jpg" },
-        { nombre: "Miguel", edad: 54, animalesAdoptados: [], imagen: "miguel.jpg" },
-        { nombre: "Pablo", edad: 40, animalesAdoptados: [], imagen: "pablo.jpg" },
-        { nombre: "Jordi", edad: 19, animalesAdoptados: [], imagen: "jordi.jpg" },
-        { nombre: "Pedro", edad: 67, animalesAdoptados: [], imagen: "pedro.jpg" },
-        { nombre: "Lucia", edad: 59, animalesAdoptados: [], imagen: "lucia.jpg" },
+        { nombre: "David", edad: 22, animalesAdoptados: [], imagen: "./img/david.jpg" },
+        { nombre: "Miguel", edad: 18, animalesAdoptados: [], imagen: "./img/miguel.jpg" },
+        { nombre: "Pablo", edad: 40, animalesAdoptados: [], imagen: "./img/pablo.jpg" },
+        { nombre: "Jordi", edad: 59, animalesAdoptados: [], imagen: "./img/jordi.jpg" },
+        { nombre: "Pedro", edad: 37, animalesAdoptados: [], imagen: "./img/pedro.jpg" },
+        { nombre: "Lucia", edad: 29, animalesAdoptados: [], imagen: "./img/lucia.jpg" },
     ];
 
     // Generar botones de personas
@@ -148,7 +148,7 @@ window.onload = function () {
             // Crear una carta para la persona
             let card = document.createElement('div');
             card.classList.add('card', 'persona-card', 'm-2');
-            card.style.width = '18rem'; // Mantener el mismo ancho que las cartas de animales
+
     
             // Añadir la imagen de la persona
             let personaImg = document.createElement('img');
