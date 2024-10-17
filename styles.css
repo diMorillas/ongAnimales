@@ -7,6 +7,9 @@
 h1{
     text-align: center;
 }
+h2{
+    margin-bottom: 30px;
+}
 
 .container{
     width: 87%;
@@ -24,6 +27,10 @@ h1{
 }
 .left{
     text-align: left;
+}
+
+.animalot-foto{
+    border-radius: 10px;
 }
 
 /*Listas*/
