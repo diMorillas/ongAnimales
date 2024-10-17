@@ -13,7 +13,7 @@
 - **Bootstrap**
 - **JavaScript Vanilla**
 
-📋 Características
+## 📋 Características
 Lista predefinida de 10 animales (4 gatos, 4 perros y 2 pájaros).
 Información detallada sobre cada animal, como nombre y edad.
 Diseño responsivo gracias a Bootstrap y Media Queries, optimizado para dispositivos móviles.
