@@ -1,4 +1,4 @@
-window.onload = () => {
+window.onload = function() {
     let seleccionAnimal; // Variable para almacenar el nombre del animal seleccionado
     let animales = [
         // Gatos
@@ -18,9 +18,7 @@ window.onload = () => {
         { nombre: "Chia", edad: 2, tipo: "ave", estadoAdopcion: false, imagen: "./img/chia.jpg" },
     ];
 
-
-    //Personas
-
+    // Personas
     let personas = [
         { nombre: "Juan", edad: 24, animalesAdoptados: [], imagen: "juan.jpg" },
         { nombre: "Laura", edad: 37, animalesAdoptados: [], imagen: "laura.jpg" },
@@ -35,52 +33,60 @@ window.onload = () => {
     ];
 
     // Generar botones de personas
-    const generaPersonas = () => {
+    const generaPersonas = function() {
         let listaPersona = document.getElementById('listaPersonas');
 
-        personas.forEach(persona => {
+        personas.forEach(function(persona) {
             let nombrePersona = document.createElement('button');
             nombrePersona.textContent = persona.nombre;
             nombrePersona.classList.add('persona');
 
             // Asignar eventListener al botón de la persona
-            nombrePersona.addEventListener('click', () => seleccionPersona(persona));
+            nombrePersona.addEventListener('click', function() {
+                seleccionPersona(persona);
+            });
 
             listaPersona.appendChild(nombrePersona);
         });
-    }
+    };
 
-    const seleccionPersona = (personaSeleccionada) => {
+    const seleccionPersona = function(personaSeleccionada) {
         // Verificar si hay un animal seleccionado
         if (seleccionAnimal) {
             // Agregar el animal seleccionado a la lista de animales adoptados por la persona
             personaSeleccionada.animalesAdoptados.push(seleccionAnimal);
             console.log(personaSeleccionada);
-            seleccionAnimal.estadoAdopcion = true;
             
             // Marcar el animal como adoptado
-            let animalImg = document.getElementById(seleccionAnimal);
+            seleccionAnimal.estadoAdopcion = true;
+
+            // Remover el botón de adopción
+            let botonAdoptar = document.getElementById("botonAdoptar-" + seleccionAnimal.nombre);
+            if (botonAdoptar) {
+                botonAdoptar.remove(); // Elimina el botón de adopción
+            }
+
+            // Cambiar el estado del animal en la tarjeta
+            let animalImg = document.getElementById(seleccionAnimal.nombre);
             animalImg.classList.add("animalAdoptado");
-            let botonAdopcion = document.getElementsByClassName('botonAdoptar');
-            botonAdopcion.classList.add('botonOculto');
 
             // Actualizar el mensaje del modal
-            document.getElementById('modalMessage').textContent = `¡${personaSeleccionada.nombre} ha adoptado a ${seleccionAnimal}!`;
-
+            document.getElementById('modalMessage').textContent = personaSeleccionada.nombre + " ha adoptado a " + seleccionAnimal.nombre + "!";
         }
-    }
+    };
 
     // Generar cartas de animales
-    const generaAnimales = () => {
+    const generaAnimales = function() {
         let listaAnimal = document.getElementById('listaAnimal');
+        listaAnimal.innerHTML = ''; // Limpiar el contenido previo
 
-        animales.forEach(animal => {
+        animales.forEach(function(animal) {
             let card = document.createElement('div');
             card.classList.add('card');
 
             let imgAnimal = document.createElement('img');
-            imgAnimal.src = animal.imagen; 
-            imgAnimal.id = animal.nombre; // Usamos el nombre del animal como id para seleccionarlo más tarde
+            imgAnimal.src = animal.imagen;
+            imgAnimal.id = animal.nombre;
             imgAnimal.classList.add('card-img-top');
             imgAnimal.alt = animal.nombre;
 
@@ -93,34 +99,41 @@ window.onload = () => {
 
             let cardText = document.createElement('p');
             cardText.classList.add('card-text', 'infoCarta', 'center');
-            if (animal.edad <= 1){
-                cardText.textContent = `¡Hola soy un ${animal.tipo} y tengo ${animal.edad} año!`; 
+            cardText.textContent = animal.edad <= 1 ? 
+                "¡Hola soy un " + animal.tipo + " y tengo " + animal.edad + " año!" : 
+                "¡Hola soy un " + animal.tipo + " y tengo " + animal.edad + " años!";
+
+            // Crear el botón solo si el estado de adopción es false
+            if (!animal.estadoAdopcion) {
+                let adoptButton = document.createElement('button');
+                adoptButton.textContent = "Adoptar";
+                adoptButton.classList.add('botonAdoptar'); // Cambiar a 'botonAdoptar'
+                adoptButton.id = "botonAdoptar-" + animal.nombre; // Cambiar ID para que contenga 'botonAdoptar'
+
+                adoptButton.addEventListener('click', function(modalWindow) {
+                    modalWindow.preventDefault();
+                    seleccionAnimal = animal; // Guardamos el objeto del animal seleccionado
+                    document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
+                    const modal = new bootstrap.Modal(document.getElementById('animalModal'));
+                    modal.show();
+                });
+
+                // Añadir el botón debajo del texto
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(adoptButton);
             } else {
-                cardText.textContent = `¡Hola soy un ${animal.tipo} y tengo ${animal.edad} años!`;
+                // Si el animal ya está adoptado, no mostrar el botón
+                cardText.textContent += " (¡Adoptado!)";
             }
-
-            let adoptButton = document.createElement('button');
-            adoptButton.classList.add('botonAdoptar');
-            adoptButton.textContent = "Adoptar";
-
-            adoptButton.addEventListener('click', (modalWindow) => {
-                modalWindow.preventDefault(); 
-                seleccionAnimal = animal.nombre; // Guardamos el nombre del animal seleccionado
-                document.getElementById('modalMessage').textContent = `¡Has seleccionado a ${seleccionAnimal}!`; 
-                const modal = new bootstrap.Modal(document.getElementById('animalModal'));
-                modal.show(); 
-            });
 
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
-            cardBody.appendChild(adoptButton);
             card.appendChild(imgAnimal);
             card.appendChild(cardBody);
             listaAnimal.appendChild(card);
         });
-    }
-
+    };
 
     generaAnimales();
     generaPersonas();
-}
+};
