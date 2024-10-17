@@ -19,7 +19,7 @@ Información detallada sobre cada animal, como nombre y edad.
 Diseño responsivo gracias a Bootstrap y Media Queries, optimizado para dispositivos móviles.
 Simulación de sistema de adopción sin la capacidad de añadir más animales.
 
-🎯 Objetivos del proyecto
+## 🎯 Objetivos del proyecto
 El proyecto tiene los siguientes objetivos educativos:
 
 - Practicar el uso de HTML5 y CSS para la creación de interfaces web.
@@ -27,5 +27,5 @@ El proyecto tiene los siguientes objetivos educativos:
 - Usar JavaScript Vanilla para añadir interactividad a la página.
 - Gestionar información de personas y animales en arrays de datos.
 
-📚 Créditos
+## 📚 Créditos
 Proyecto desarrollado por Pau Morillas y Didac Morillas como parte del curso de Desarrollo de Aplicaciones Web en Jesuïtes el Clot 2024.
