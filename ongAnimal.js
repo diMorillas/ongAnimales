@@ -1,5 +1,5 @@
-window.onload = function() {
-    let seleccionAnimal; // Variable para almacenar el nombre del animal seleccionado
+window.onload = function () {
+    let seleccionAnimal = null;
     let animales = [
         // Gatos
         { nombre: "Wiskas", edad: 7, tipo: "gato", estadoAdopcion: false, imagen: "./img/wiskas.jpeg" },
@@ -20,10 +20,10 @@ window.onload = function() {
 
     // Personas
     let personas = [
-        { nombre: "Juan", edad: 24, animalesAdoptados: [], imagen: "juan.jpg" },
-        { nombre: "Laura", edad: 37, animalesAdoptados: [], imagen: "laura.jpg" },
-        { nombre: "Luis", edad: 31, animalesAdoptados: [], imagen: "luis.jpg" },
-        { nombre: "Maria Teresa", edad: 18, animalesAdoptados: [], imagen: "mariateresa.jpg" },
+        { nombre: "Juan", edad: 24, animalesAdoptados: [], imagen: "./img/juan.jpg" },
+        { nombre: "Laura", edad: 37, animalesAdoptados: [], imagen: "./img/laura.jpg" },
+        { nombre: "Luis", edad: 31, animalesAdoptados: [], imagen: "./img/luis.jpg" },
+        { nombre: "Maria Teresa", edad: 18, animalesAdoptados: [], imagen: "./img/mariateresa.jpg" },
         { nombre: "David", edad: 22, animalesAdoptados: [], imagen: "david.jpg" },
         { nombre: "Miguel", edad: 54, animalesAdoptados: [], imagen: "miguel.jpg" },
         { nombre: "Pablo", edad: 40, animalesAdoptados: [], imagen: "pablo.jpg" },
@@ -33,16 +33,15 @@ window.onload = function() {
     ];
 
     // Generar botones de personas
-    const generaPersonas = function() {
+    const generaPersonas = function () {
         let listaPersona = document.getElementById('listaPersonas');
 
-        personas.forEach(function(persona) {
+        personas.forEach(function (persona) {
             let nombrePersona = document.createElement('button');
             nombrePersona.textContent = persona.nombre;
             nombrePersona.classList.add('persona');
 
-            // Asignar eventListener al botón de la persona
-            nombrePersona.addEventListener('click', function() {
+            nombrePersona.addEventListener('click', function () {
                 seleccionPersona(persona);
             });
 
@@ -50,37 +49,47 @@ window.onload = function() {
         });
     };
 
-    const seleccionPersona = function(personaSeleccionada) {
-        // Verificar si hay un animal seleccionado
+
+    const seleccionPersona = function (personaSeleccionada) {
         if (seleccionAnimal) {
-            // Agregar el animal seleccionado a la lista de animales adoptados por la persona
             personaSeleccionada.animalesAdoptados.push(seleccionAnimal);
             console.log(personaSeleccionada);
-            
-            // Marcar el animal como adoptado
+
             seleccionAnimal.estadoAdopcion = true;
 
-            // Remover el botón de adopción
             let botonAdoptar = document.getElementById("botonAdoptar-" + seleccionAnimal.nombre);
             if (botonAdoptar) {
-                botonAdoptar.remove(); // Elimina el botón de adopción
+                botonAdoptar.remove();
             }
 
-            // Cambiar el estado del animal en la tarjeta
             let animalImg = document.getElementById(seleccionAnimal.nombre);
             animalImg.classList.add("animalAdoptado");
 
-            // Actualizar el mensaje del modal
+            // Crear la imagen de la cruz
+            let cruzImg = document.createElement('img');
+            cruzImg.src = './img/cruz.png'; // Ruta a la imagen de la cruz
+            cruzImg.classList.add('cruz'); // Añadir una clase para el estilo
+
+            // Posicionar la cruz sobre el animal
+            animalImg.parentNode.appendChild(cruzImg);
+
             document.getElementById('modalMessage').textContent = personaSeleccionada.nombre + " ha adoptado a " + seleccionAnimal.nombre + "!";
+
+
+            seleccionAnimal = null;
         }
     };
 
-    // Generar cartas de animales
-    const generaAnimales = function() {
-        let listaAnimal = document.getElementById('listaAnimal');
-        listaAnimal.innerHTML = ''; // Limpiar el contenido previo
 
-        animales.forEach(function(animal) {
+
+
+
+
+    // Generar cartas de animales
+    const generaAnimales = function () {
+        let listaAnimal = document.getElementById('listaAnimal');
+
+        animales.forEach(function (animal) {
             let card = document.createElement('div');
             card.classList.add('card');
 
@@ -99,41 +108,76 @@ window.onload = function() {
 
             let cardText = document.createElement('p');
             cardText.classList.add('card-text', 'infoCarta', 'center');
-            cardText.textContent = animal.edad <= 1 ? 
-                "¡Hola soy un " + animal.tipo + " y tengo " + animal.edad + " año!" : 
-                "¡Hola soy un " + animal.tipo + " y tengo " + animal.edad + " años!";
 
-            // Crear el botón solo si el estado de adopción es false
-            if (!animal.estadoAdopcion) {
+            if (animal.edad === 1) {
+                cardText.textContent = "¡Hola soy un " + animal.tipo + " y tengo " + animal.edad + " año!";
+            } else {
+                cardText.textContent = "¡Hola soy un " + animal.tipo + " y tengo " + animal.edad + " años!";
+            }
+
+            cardBody.appendChild(cardTitle);
+
+            if (!animal.estadoAdopcion && !seleccionAnimal) {
                 let adoptButton = document.createElement('button');
                 adoptButton.textContent = "Adoptar";
-                adoptButton.classList.add('botonAdoptar'); // Cambiar a 'botonAdoptar'
-                adoptButton.id = "botonAdoptar-" + animal.nombre; // Cambiar ID para que contenga 'botonAdoptar'
+                adoptButton.classList.add('botonAdoptar');
+                adoptButton.id = "botonAdoptar-" + animal.nombre;
 
-                adoptButton.addEventListener('click', function(modalWindow) {
-                    modalWindow.preventDefault();
-                    seleccionAnimal = animal; // Guardamos el objeto del animal seleccionado
+                adoptButton.addEventListener('click', function (modalWindow) {
+                    seleccionAnimal = animal;
                     document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
                     const modal = new bootstrap.Modal(document.getElementById('animalModal'));
                     modal.show();
                 });
 
-                // Añadir el botón debajo del texto
                 cardBody.appendChild(cardText);
                 cardBody.appendChild(adoptButton);
-            } else {
-                // Si el animal ya está adoptado, no mostrar el botón
-                cardText.textContent += " (¡Adoptado!)";
             }
 
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardText);
             card.appendChild(imgAnimal);
             card.appendChild(cardBody);
             listaAnimal.appendChild(card);
         });
     };
 
+    const generaPersonasCarta = function () {
+        let listaPersona = document.getElementById('listaPersonasCartas');
+        listaPersona.innerHTML = ''; // Limpiar el contenido anterior
+    
+        personas.forEach(function (persona) {
+            // Crear una carta para la persona
+            let card = document.createElement('div');
+            card.classList.add('card', 'persona-card', 'm-2');
+            card.style.width = '18rem'; // Mantener el mismo ancho que las cartas de animales
+    
+            // Añadir la imagen de la persona
+            let personaImg = document.createElement('img');
+            personaImg.src = persona.imagen; // Asegúrate de que la imagen de la persona está correctamente enlazada
+            personaImg.classList.add('card-img-top');
+            personaImg.alt = persona.nombre;
+    
+            // Crear el nombre de la persona
+            let cardBody = document.createElement('div');
+            cardBody.classList.add('card-body');
+    
+            let cardTitle = document.createElement('h5');
+            cardTitle.classList.add('card-title', 'text-center');
+            cardTitle.textContent = persona.nombre;
+    
+            // Añadir el título a la carta
+            cardBody.appendChild(cardTitle);
+            card.appendChild(personaImg);
+            card.appendChild(cardBody);
+            listaPersona.appendChild(card);
+        });
+    };
+    
+    
+
+
+
+
     generaAnimales();
     generaPersonas();
+    generaPersonasCarta();
 };
