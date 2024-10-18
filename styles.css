@@ -35,6 +35,10 @@ h2{
 }
 
 
+.hidden{
+    opacity: 0%;
+}
+
 
 /*Listas*/
 
@@ -149,8 +153,9 @@ border-radius: 10px;
 .texto-adoptado {
     font-size: 14px;
     font-weight: bold;
-    color: #28a745; /* Color de éxito/adopción */
+    color: #28a745;
     text-align: center;
+    cursor: pointer;
 }
 
 

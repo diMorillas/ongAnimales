@@ -125,29 +125,58 @@ window.onload = function () {
                         animal.estadoAdopcion = false;
 
                         // Eliminar al animal de la lista de adoptados
-                        let index = personaSeleccionada.animalesAdoptados.indexOf(animal);
-                        if (index !== -1) {
-                            personaSeleccionada.animalesAdoptados.splice(index, 1);
+                        let indexArrayAnimal = personaSeleccionada.animalesAdoptados.indexOf(animal);
+                        if (indexArrayAnimal !== -1) { // Se pone !== -1 para indicar que si no está en el array, se muestra -1 y por tanto no hay nada que eliminar
+                            personaSeleccionada.animalesAdoptados.splice(indexArrayAnimal, 1);
                         }
 
-                        // Cambiar el texto a "¡[NombreAnimal] ya no está adoptado!"
-                        textoAdoptado.textContent = "¡" + animal.nombre + " ya no está adoptado!";
+                        // Cambiar el texto a un display:none; para que no se muestre nada.
+                        textoAdoptado.style.display = 'none';
 
                         // Eliminar la clase de 'adoptado' al animal en la lista principal
                         let animalImg = document.getElementById(animal.nombre);
                         animalImg.classList.remove("animalAdoptado");
 
-                        // Volver a mostrar el botón de adopción en la carta del animal
-                        let adoptButton = document.createElement('button');
-                        adoptButton.textContent = "Adoptar";
-                        adoptButton.classList.add('botonAdoptar');
-                        adoptButton.id = "botonAdoptar-" + animal.nombre;
+                        // Selecciona la imagen de la cruz dentro del contenedor del animal y la oculta
+                        let cruzImg = animalImg.parentNode.querySelector('.cruz');
+                        if (cruzImg) {
+                            cruzImg.remove(); // Eliminamos la cruz del DOM
+                        }
+
+                        // Mostrar el botón de "Adoptar" nuevamente
+                        let botonAdoptar = document.createElement('button');
+                        botonAdoptar.textContent = "Adoptar";
+                        botonAdoptar.classList.add('botonAdoptar');
+                        botonAdoptar.id = "botonAdoptar-" + animal.nombre;
+
+                        // Asignar el evento al nuevo botón de adoptar
+                        botonAdoptar.addEventListener('click', function () {
+                            seleccionAnimal = animal;
+                            document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
+                            const modal = new bootstrap.Modal(document.getElementById('animalModal'));
+                            modal.show();
+                        });
+
+                        // Añadir el botón de adoptar al contenedor del animal
+                        animalImg.parentNode.querySelector('.card-body').appendChild(botonAdoptar);
+
+
+                        // Asignar el evento al nuevo botón de adoptar
+                        botonAdoptar.addEventListener('click', function () {
+                            seleccionAnimal = animal;
+                            document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
+                        });
+
+                        // Añadir el botón de adoptar de nuevo al contenedor del animal
+                        animalImg.parentNode.querySelector('.card-body').appendChild(botonAdoptar);
 
                         adoptButton.addEventListener('click', function () {
                             seleccionAnimal = animal;
                             document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
                             const modal = new bootstrap.Modal(document.getElementById('animalModal'));
                             modal.show();
+
+                            modal.hide();
                         });
 
                         // Insertar el botón de nuevo en la carta del animal
