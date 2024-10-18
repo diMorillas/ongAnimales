@@ -31,7 +31,7 @@ window.onload = function () {
         { nombre: "Pedro", edad: 37, animalesAdoptados: [], imagen: "./img/pedro.webp" },
         { nombre: "Lucia", edad: 29, animalesAdoptados: [], imagen: "./img/lucia.webp" },
     ];
-
+    
     // Generar botones de personas
     const generaPersonas = function () {
         let listaPersona = document.getElementById('listaPersonas');
@@ -77,6 +77,7 @@ window.onload = function () {
             actualizaCartaPersona(personaSeleccionada);
 
             document.getElementById('modalMessage').textContent = personaSeleccionada.nombre + " ha adoptado a " + seleccionAnimal.nombre + "!";
+
 
             seleccionAnimal = null;
         }
