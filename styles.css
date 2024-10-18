@@ -17,6 +17,7 @@ h2{
     margin:auto;
 }
 
+
 /*Auxiliares*/
 
 .center{
@@ -25,6 +26,21 @@ h2{
 .left{
     text-align: left;
 }
+
+.gris{
+    background-color: #F8F9FA;
+    padding: 20px;
+    width: 80%;
+}
+
+.body-bg {
+    background-color: #F8F9FA;
+    min-height: 55vh; /* vh se refiere a Viewport Height, cada 10 es un 10%. 10x10 = 100% */
+    padding-top: 20px; 
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
 
 
 
@@ -182,3 +198,13 @@ border-radius: 10px;
     grid-template-columns: calc(2 1fr);
 }
 
+
+/*Formulario*/
+
+.btn-form{
+    margin-top: 20px;
+    padding: 8px 38px;
+}
+
+
+.form-control{}
