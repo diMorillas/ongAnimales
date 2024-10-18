@@ -20,16 +20,16 @@ window.onload = function () {
 
     // Personas
     let personas = [
-        { nombre: "Juan", edad: 24, animalesAdoptados: [], imagen: "./img/juan.jpg" },
-        { nombre: "Laura", edad: 37, animalesAdoptados: [], imagen: "./img/laura.jpg" },
-        { nombre: "Luis", edad: 31, animalesAdoptados: [], imagen: "./img/luis.jpg" },
-        { nombre: "Maria Teresa", edad: 18, animalesAdoptados: [], imagen: "./img/mariateresa.jpg" },
-        { nombre: "David", edad: 22, animalesAdoptados: [], imagen: "./img/david.jpg" },
-        { nombre: "Miguel", edad: 18, animalesAdoptados: [], imagen: "./img/miguel.jpg" },
-        { nombre: "Pablo", edad: 40, animalesAdoptados: [], imagen: "./img/pablo.jpg" },
-        { nombre: "Jordi", edad: 59, animalesAdoptados: [], imagen: "./img/jordi.jpg" },
-        { nombre: "Pedro", edad: 37, animalesAdoptados: [], imagen: "./img/pedro.jpg" },
-        { nombre: "Lucia", edad: 29, animalesAdoptados: [], imagen: "./img/lucia.jpg" },
+        { nombre: "Juan", edad: 24, animalesAdoptados: [], imagen: "./img/juan.webp" },
+        { nombre: "Laura", edad: 37, animalesAdoptados: [], imagen: "./img/laura.webp" },
+        { nombre: "Luis", edad: 31, animalesAdoptados: [], imagen: "./img/luis.webp" },
+        { nombre: "Maria Teresa", edad: 18, animalesAdoptados: [], imagen: "./img/mariateresa.webp" },
+        { nombre: "David", edad: 22, animalesAdoptados: [], imagen: "./img/david.webp" },
+        { nombre: "Miguel", edad: 18, animalesAdoptados: [], imagen: "./img/miguel.webp" },
+        { nombre: "Pablo", edad: 40, animalesAdoptados: [], imagen: "./img/pablo.webp" },
+        { nombre: "Jordi", edad: 59, animalesAdoptados: [], imagen: "./img/jordi.webp" },
+        { nombre: "Pedro", edad: 37, animalesAdoptados: [], imagen: "./img/pedro.webp" },
+        { nombre: "Lucia", edad: 29, animalesAdoptados: [], imagen: "./img/lucia.webp" },
     ];
 
     // Generar botones de personas
