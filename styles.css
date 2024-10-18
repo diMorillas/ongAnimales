@@ -11,13 +11,10 @@ h2{
     margin-bottom: 30px;
 }
 
+/*Container*/
 .container{
     width: 87%;
     margin:auto;
-}
-
-.img-seccion-hero{
-    filter: drop-shadow(0 0 12px crimson); /*Filter para que nos resiga la imagen*/
 }
 
 /*Auxiliares*/
@@ -29,10 +26,6 @@ h2{
     text-align: left;
 }
 
-.animalot-foto{
-    border-radius: 10px;
-    width: 80%;
-}
 
 
 .hidden{
@@ -44,6 +37,26 @@ h2{
     font-weight: 550;
 }
 
+/*Imagenes*/
+
+.animalot-foto{
+    border-radius: 10px;
+    width: 80%;
+}
+
+.img-seccion-hero{
+    filter: drop-shadow(0 0 12px crimson); 
+}
+
+.cruz {
+    position: absolute;
+    top: 17.5%; 
+    left: 5%;
+    width: 260px; 
+    height: auto; 
+    z-index: 3; 
+    pointer-events: none;
+}
 
 /*Listas*/
 
@@ -125,16 +138,6 @@ border-radius: 10px;
 
 .botonAdoptar:hover{
     background-color: #0056b3;
-}
-
-.cruz {
-    position: absolute;
-    top: 17.5%; 
-    left: 5%;
-    width: 260px; 
-    height: auto; 
-    z-index: 3; 
-    pointer-events: none;
 }
 
 .persona-card {
