@@ -304,3 +304,4 @@ window.onload = function () {
     generaPersonas();
     generaPersonasCarta();
 };
+
