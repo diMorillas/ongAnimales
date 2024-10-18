@@ -23,6 +23,7 @@ h2{
 .center{
     text-align: center;
 }
+
 .left{
     text-align: left;
 }
@@ -55,6 +56,11 @@ h2{
 
 /*Imagenes*/
 
+.logo{
+    width: 80px;
+}
+
+
 .animalot-foto{
     border-radius: 10px;
     width: 80%;
@@ -73,6 +79,19 @@ h2{
     z-index: 3; 
     pointer-events: none;
 }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 60vh;           
+}
+
+.imagen-centrada {
+    max-width: 100%;
+    height: auto;
+}
+
 
 /*Listas*/
 
