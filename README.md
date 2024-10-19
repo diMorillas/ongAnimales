@@ -1,6 +1,6 @@
 # 🐾 Animalot el Clot
 
-## 🚀 Descrition
+## 🚀 Description
 
 **Animalot el Clot**  is a web platform for animal adoption, developed as part of the second-year Web Development project. It allows users to browse a list of animals available for adoption, including 4 cats, 4 dogs, and 2 birds, and interact to have these animals adopted by predefined users.
 
@@ -13,13 +13,13 @@
 - **Bootstrap**
 - **JavaScript Vanilla**
 
-## 📋 Características
+## 📋 Features
 Predefined list of 10 animals (4 cats, 4 dogs, and 2 birds). 
 Detailed information about each animal, such as name and age. 
 Responsive design using Bootstrap and Media Queries, optimized for mobile devices. 
 Adoption system simulation without the ability to add more animals.
 
-## 🎯 Objetivos del proyecto
+## 🎯 Project Goals
 The project has the following educational goals:
 
 - Practice using HTML5 and CSS to create web interfaces.
