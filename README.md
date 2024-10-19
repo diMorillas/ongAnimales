@@ -1,12 +1,12 @@
 # 🐾 Animalot el Clot
 
-## 🚀 Descripción
+## 🚀 Descrition
 
-**Animalot el Clot** es una plataforma web para la adopción de animales, desarrollada como parte del proyecto de segundo año de Desarrollo Web. Permite consultar una lista de animales disponibles para adopción, incluyendo 4 gatos, 4 perros y 2 pájaros e interactuar para que estos sean adoptados por usuarios ya predefinidos.
+**Animalot el Clot**  is a web platform for animal adoption, developed as part of the second-year Web Development project. It allows users to browse a list of animals available for adoption, including 4 cats, 4 dogs, and 2 birds, and interact to have these animals adopted by predefined users.
 
 ---
 
-## 💡 Tecnologías utilizadas
+## 💡 Stack
 
 - **HTML5**
 - **CSS**
@@ -14,18 +14,18 @@
 - **JavaScript Vanilla**
 
 ## 📋 Características
-Lista predefinida de 10 animales (4 gatos, 4 perros y 2 pájaros).
-Información detallada sobre cada animal, como nombre y edad.
-Diseño responsivo gracias a Bootstrap y Media Queries, optimizado para dispositivos móviles.
-Simulación de sistema de adopción sin la capacidad de añadir más animales.
+Predefined list of 10 animals (4 cats, 4 dogs, and 2 birds). 
+Detailed information about each animal, such as name and age. 
+Responsive design using Bootstrap and Media Queries, optimized for mobile devices. 
+Adoption system simulation without the ability to add more animals.
 
 ## 🎯 Objetivos del proyecto
-El proyecto tiene los siguientes objetivos educativos:
+The project has the following educational goals:
 
-- Practicar el uso de HTML5 y CSS para la creación de interfaces web.
-- Aplicar Bootstrap para lograr un diseño fluido y responsivo.
-- Usar JavaScript Vanilla para añadir interactividad a la página.
-- Gestionar información de personas y animales en arrays de datos.
+- Practice using HTML5 and CSS to create web interfaces.
+- Apply Bootstrap to achieve a fluid and responsive design.
+- Use Vanilla JavaScript to add interactivity to the page.
+- Manage information for people and animals using data arrays.
 
-## 📚 Créditos
-Proyecto desarrollado por Pau Morillas y Didac Morillas como parte del curso de Desarrollo de Aplicaciones Web en Jesuïtes el Clot 2024.
+## 📚 Credits
+Project developed by Pau Morillas and Didac Morillas as part of the 2024 Web Application Development course at Jesuïtes el Clot, Barcelona.
