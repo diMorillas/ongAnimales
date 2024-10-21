@@ -44,6 +44,10 @@
     </div>
   </nav>
   <!--Fin NAVBAR-->
+
+  <!--Inicio Audio-->
+  <audio id="meow-audio" src="./audio/meow.mp3"></audio>
+  <!--Fin Aduio-->
   <!--Inicio seccion HERO-->
   <section>
     <div class="container col-xxl-8 px-4 py-4">
@@ -57,8 +61,10 @@
           <p class="lead">Adopta, apadrina, dona y colabora con Animalot el Clot. Protectora de perros, gatos y pájaros
             que ofrece un hogar para animales abandonados en Barcelona.</p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" onclick="location.href='adopcion.html'">Adopta</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="location.href='#contacto'">Contacta</button>
+            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2"
+              onclick="location.href='adopcion.html'">Adopta</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4"
+              onclick="location.href='#contacto'">Contacta</button>
           </div>
 
         </div>
@@ -120,13 +126,31 @@
         </div>
 
         <!-- Botón de envío -->
-        <button type="button" class="btn btn-primary btn-form" onclick="location.href='postform.html'">Enviar</button>
+        <button type="button" class="btn btn-primary btn-form" onclick="meow()">Enviar</button>
       </form>
     </div>
   </div>
+
+  <script>
+
+    // Sonido al clickar en el botón de envío del formulario  
+    const meow = function () {
+      let audio = document.getElementById("meow-audio");
+      if (audio) {
+        audio.play();
+        // Esperar 1.5 segundos antes de redirigir
+        setTimeout(function () {
+          window.location.href = 'postform.html';
+        }, 1550); // 1500 ms (1.5 segundos) de retraso para la redirección
+      } else {
+        console.log("No se ha reproducido correctamente <audio>");
+      }
+    }
+  </script>
   <!--Fin Formulario de Contacto-->
   <footer>
-    <p class="footerClot">2005 - 2024© | Animalot el Clot | Gran vía 616 - 08028 Barcelona | 678 980 541 | info@animaclot.es</p>
+    <p class="footerClot">2005 - 2024© | Animalot el Clot | Gran vía 616 - 08028 Barcelona | 678 980 541 |
+      info@animaclot.es</p>
   </footer>
 </body>
 

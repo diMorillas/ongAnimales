@@ -294,12 +294,6 @@ window.onload = function () {
         });
     };
 
-
-
-
-
-
-
     generaAnimales();
     generaPersonas();
     generaPersonasCarta();
