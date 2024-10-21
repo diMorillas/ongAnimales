@@ -121,7 +121,7 @@ window.onload = function () {
                     textoAdoptado.classList.add('texto-adoptado');
 
                     // Añadir un event listener para revertir la adopción
-                    textoAdoptado.addEventListener('click', function () {
+                    textoAdoptado.addEventListener('dblclick', function () {  // Usamos el Double Click para evitar posibles errores al clickar haciendo scroll.
                         // Revertir el estado de adopción del animal
                         animal.estadoAdopcion = false;
 
