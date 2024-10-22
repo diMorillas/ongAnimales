@@ -109,11 +109,13 @@ window.onload = function () {
                     let animalContainer = document.createElement('div');
                     animalContainer.classList.add('animal-adoptado');
 
-                    // Imagen del animal adoptado
+                    // Imagen del animal adoptado (no está implementado del todo. Está en stand by)
+                    /*
                     let imgAnimalAdoptado = document.createElement('img');
                     imgAnimalAdoptado.src = animal.imagen;
                     imgAnimalAdoptado.classList.add('animal-adoptado-img');
                     imgAnimalAdoptado.alt = animal.nombre;
+                    */
 
                     // Texto que indica que el animal ha sido adoptado
                     let textoAdoptado = document.createElement('p');
