@@ -231,3 +231,20 @@ border-radius: 10px;
     text-align: center;
     padding: 30px;
 }
+
+
+/*Efecto imagen*/
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+img.spin {
+    animation: spin 3s linear;
+    animation-iteration-count: infinite; /*Las veces que gira*/
+}
+
+.imgPostForm{
+    width: 450px;
+}

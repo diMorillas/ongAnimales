@@ -13,7 +13,6 @@
     <!--CSS propio-->
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="./img/logo.png">
-
 </head>
 
 <body>
@@ -45,14 +44,31 @@
     </nav>
     <!--Fin NAVBAR-->
     <div class="image-container">
-        <img class="center" src="./img/logo.png" alt="logoEmpresaFormulario">
+        <img class="logo center imgPostForm" id="imagenGiratoria" src="./img/logo.png" alt="logoEmpresaFormulario">
     </div>
     <h1>¡Gracias por rellenar el formulario!</h1>
     <br><br><br><br>
+
+    <audio id="spinSound">
+        <source src="./audio/spin.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
     <footer>
         <p class="footerClot">2005 - 2024© | Animalot el Clot | Gran vía 616 - 08028 Barcelona | 678 980 541 |
             info@animaclot.es</p>
     </footer>
+
+    <script>
+        let logo = document.getElementById("imagenGiratoria");
+        let audio = document.getElementById('spinSound');
+
+        logo.addEventListener('click', function() {
+            logo.classList.add('spin');
+            audio.play();
+        });
+    </script>
+
 </body>
 
 </html>
