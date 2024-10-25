@@ -76,9 +76,7 @@ h2{
 
 @media (max-width: 391px){ /*iPhone*/
     .animalot-foto{
-        border-radius: 10px;
-        width: 80%;
-        margin-left: 55px;
+        display: none;
     }
 }
 
@@ -90,6 +88,13 @@ h2{
     .img-seccion-hero{
         filter: drop-shadow(0 0 12px crimson); 
         margin-left: 95px;
+    }
+}
+
+@media (max-width: 500px){ /*iPad*/
+    .img-seccion-hero{
+        filter: drop-shadow(0 0 12px crimson); 
+        margin-left: 33px;
     }
 }
 
@@ -271,12 +276,6 @@ border-radius: 10px;
     padding: 8px 38px;
 }
 
-/*Footer*/
-
-.footerClot{
-    text-align: center;
-    padding: 30px;
-}
 
 
 /*Efecto imagen*/
@@ -293,4 +292,11 @@ img.spin {
 
 .imgPostForm{
     width: 450px;
+}
+
+/*Footer*/
+
+.footerClot{
+    text-align: center; 
+    padding: 30px;
 }
