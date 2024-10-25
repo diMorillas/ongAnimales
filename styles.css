@@ -241,13 +241,7 @@ border-radius: 10px;
 
 .containerNosotros {
     display: flex;
-    flex-direction: column;
     align-items: center;
-}
-
-.imgNosotros {
-    width: 100%;
-    max-width: 500px; 
 }
 
 .textoNosotros {
@@ -264,6 +258,12 @@ border-radius: 10px;
 @media (max-width: 460px) {
     .containerNosotros {
         flex-direction: column;
+    }
+
+    .imgNosotros{
+        width: 300px;
+        height: auto;
+        border-radius: 5px;
     }
 }
 
