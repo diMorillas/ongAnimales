@@ -1,5 +1,22 @@
+/**
+ * @author Pau Morillas
+ * @author Dídac Morillas
+ * @version 1.0.0
+ * 
+ * Vanilla JS 
+ */
+
+
+
+
+/**
+ * La función onload es para esperar a que cargue toda la página antes de ejecutar JS
+ */
 window.onload = function () {
+    //Variable a la que damos valor cuando se hace clic en un animal.
     let seleccionAnimal = null;
+    //Arrays con objetos en los que guardamos los datos.
+
     let animales = [
         // Gatos
         { nombre: "Wiskas", edad: 7, tipo: "gato", estadoAdopcion: false, imagen: "./img/wiskas.png" },
@@ -32,7 +49,11 @@ window.onload = function () {
         { nombre: "Lucia", edad: 29, animalesAdoptados: [], imagen: "./img/lucia.webp" },
     ];
     
-    // Generar botones de personas
+    /**
+     * Función que genera las perosnas como botones dentro de un div en el modal window (la generamos con JS y bootstrap)
+     * está en este div:<div id="listaPersonas">
+     * No toma parámetros. Solo usamos el id de lista personas para crear los elementos y añadirlos con appendChild()
+     */
     const generaPersonas = function () {
         let listaPersona = document.getElementById('listaPersonas');
 
@@ -49,19 +70,25 @@ window.onload = function () {
         });
     };
 
-
+    /**
+     * 
+     * @param {object} personaSeleccionada es la persona sobre la que hemos hecho clic
+     * Es una función para gestionar la adopción y la asignación de la persona.
+     * Si se ha seleccionado un animal previamente se hace un push al array de animales adoptados del animal seleccionado en sleccionAnimal.
+     * 
+     */
     const seleccionPersona = function (personaSeleccionada) {
         if (seleccionAnimal) {
             personaSeleccionada.animalesAdoptados.push(seleccionAnimal);
             console.log(personaSeleccionada);
 
             seleccionAnimal.estadoAdopcion = true;
-
+            //Creamos una variable para trabajar mejor con el botón. Este botón adoptar se crea como id para cada uno de los animales, así trabajamos de forma independiente y lo podemos ocultar.
             let botonAdoptar = document.getElementById("botonAdoptar-" + seleccionAnimal.nombre);
             if (botonAdoptar) {
                 botonAdoptar.remove();
             }
-
+            //selección del animal para añadir la clase de animal adoptado (y con esto cambiar la imagen).
             let animalImg = document.getElementById(seleccionAnimal.nombre);
             animalImg.classList.add("animalAdoptado");
 
@@ -83,7 +110,11 @@ window.onload = function () {
         }
     };
 
-
+    /**
+     * 
+     * @param {object} personaSeleccionada
+     * Función que actualiza la carta de la persona cuando adoptamo so desadoptamos un animal 
+     */
     const actualizaCartaPersona = function (personaSeleccionada) {
         // Buscar la carta correspondiente
         const personaCards = document.querySelectorAll('.persona-card');
@@ -91,8 +122,8 @@ window.onload = function () {
         personaCards.forEach(function (card) {
             // Comprobar si el nombre en la carta coincide con el nombre de la persona seleccionada
             if (card.querySelector('.card-title').textContent === personaSeleccionada.nombre) {
-                // Limpiar el contenido anterior de animales adoptados
                 let animalesAdoptadosList = card.querySelector('.animales-adoptados');
+                //Si no existe se crea el contenedor
                 if (!animalesAdoptadosList) {
                     // Crear un contenedor para los animales adoptados si no existe
                     animalesAdoptadosList = document.createElement('div');
@@ -108,14 +139,6 @@ window.onload = function () {
                     // Crear un contenedor para cada animal adoptado
                     let animalContainer = document.createElement('div');
                     animalContainer.classList.add('animal-adoptado');
-
-                    // Imagen del animal adoptado (no está implementado del todo. Está en stand by)
-                    /*
-                    let imgAnimalAdoptado = document.createElement('img');
-                    imgAnimalAdoptado.src = animal.imagen;
-                    imgAnimalAdoptado.classList.add('animal-adoptado-img');
-                    imgAnimalAdoptado.alt = animal.nombre;
-                    */
 
                     // Texto que indica que el animal ha sido adoptado
                     let textoAdoptado = document.createElement('p');
@@ -173,15 +196,6 @@ window.onload = function () {
                         // Añadir el botón de adoptar de nuevo al contenedor del animal
                         animalImg.parentNode.querySelector('.card-body').appendChild(botonAdoptar);
 
-                        adoptButton.addEventListener('click', function () {
-                            seleccionAnimal = animal;
-                            document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
-                            const modal = new bootstrap.Modal(document.getElementById('animalModal'));
-                            modal.show();
-
-                            modal.hide();
-                        });
-
                         // Insertar el botón de nuevo en la carta del animal
                         cardBody.appendChild(adoptButton);
 
@@ -199,12 +213,9 @@ window.onload = function () {
     };
 
 
-
-
-
-
-
-    // Generar cartas de animales
+    /**
+     * Función de flecha que genera las cartas de los animales con los datos del array y clases de bootstrap con el div en html que tiene el id 'listaAnimal'
+     */
     const generaAnimales = function () {
         let listaAnimal = document.getElementById('listaAnimal');
 
@@ -259,6 +270,9 @@ window.onload = function () {
         });
     };
 
+    /**
+     * Función que genera las cartas de las personas en la que se ven los animales adoptados 
+     */
     const generaPersonasCarta = function () {
         let listaPersona = document.getElementById('listaPersonasCartas');
         listaPersona.innerHTML = ''; // Limpiar el contenido anterior
