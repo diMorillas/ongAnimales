@@ -66,8 +66,31 @@ h2{
     width: 80%;
 }
 
+@media (min-width: 768px){ /*iPad*/
+    .animalot-foto{ 
+        border-radius: 10px;
+        width: 80%;
+        margin-left: 150px;
+    }
+}
+
+@media (max-width: 391px){ /*iPhone*/
+    .animalot-foto{
+        border-radius: 10px;
+        width: 80%;
+        margin-left: 55px;
+    }
+}
+
 .img-seccion-hero{
     filter: drop-shadow(0 0 12px crimson); 
+}
+
+@media (min-width: 768px){ /*iPad*/
+    .img-seccion-hero{
+        filter: drop-shadow(0 0 12px crimson); 
+        margin-left: 95px;
+    }
 }
 
 .cruz {
@@ -211,11 +234,34 @@ border-radius: 10px;
     border-radius: 5px;
 }
 
-.containerNosotros{
+.containerNosotros {
     display: flex;
-    gap: 50px;
-    grid-template-columns: calc(2 1fr);
+    flex-direction: column;
+    align-items: center;
 }
+
+.imgNosotros {
+    width: 100%;
+    max-width: 500px; 
+}
+
+.textoNosotros {
+    padding: 1rem;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .containerNosotros {
+        flex-direction: column; 
+    }
+}
+
+@media (max-width: 460px) {
+    .containerNosotros {
+        flex-direction: column;
+    }
+}
+
 
 
 /*Formulario*/
