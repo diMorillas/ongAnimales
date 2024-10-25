@@ -5,10 +5,6 @@
  * 
  * Vanilla JS 
  */
-
-
-
-
 /**
  * La función onload es para esperar a que cargue toda la página antes de ejecutar JS
  */
