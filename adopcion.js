@@ -252,7 +252,8 @@ window.onload = function () {
                 adoptButton.textContent = "Adoptar";
                 adoptButton.classList.add('botonAdoptar');
                 adoptButton.id = "botonAdoptar-" + animal.nombre;
-
+                
+                /**Función para gestionar el modal */
                 adoptButton.addEventListener('click', function (modalWindow) {
                     seleccionAnimal = animal;
                     document.getElementById('modalMessage').textContent = "¡Has seleccionado a " + animal.nombre + "!";
@@ -276,7 +277,6 @@ window.onload = function () {
     const generaPersonasCarta = function () {
         let listaPersona = document.getElementById('listaPersonasCartas');
         listaPersona.innerHTML = ''; // Limpiar el contenido anterior
-
         personas.forEach(function (persona) {
             // Crear una carta para la persona
             let card = document.createElement('div');
