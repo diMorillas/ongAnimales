@@ -66,7 +66,7 @@ h2{
     width: 80%;
 }
 
-@media (min-width: 768px){ /*iPad*/
+@media (max-width: 768px){ /*iPad*/
     .animalot-foto{ 
         border-radius: 10px;
         width: 80%;
@@ -86,7 +86,7 @@ h2{
     filter: drop-shadow(0 0 12px crimson); 
 }
 
-@media (min-width: 768px){ /*iPad*/
+@media (max-width: 768px){ /*iPad*/
     .img-seccion-hero{
         filter: drop-shadow(0 0 12px crimson); 
         margin-left: 95px;
