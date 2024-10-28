@@ -71,7 +71,7 @@ window.onload = function () {
      * @param {object} personaSeleccionada es la persona sobre la que hemos hecho clic
      * Es una función para gestionar la adopción y la asignación de la persona.
      * Si se ha seleccionado un animal previamente se hace un push al array de animales adoptados del animal seleccionado en sleccionAnimal.
-     * 
+     * Se usa dentro de generaPersona como callback
      */
     const seleccionPersona = function (personaSeleccionada) {
         if (seleccionAnimal) {
@@ -110,6 +110,7 @@ window.onload = function () {
      * 
      * @param {object} personaSeleccionada
      * Función que actualiza la carta de la persona cuando adoptamo so desadoptamos un animal 
+     * Se usa dentro de seleccionpersona
      */
     const actualizaCartaPersona = function (personaSeleccionada) {
         // Buscar la carta correspondiente
